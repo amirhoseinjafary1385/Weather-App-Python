@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% if weather %}
+            <h1>Weather in {{ weather.city }}</h1>
+            <div class="weather-info">
+                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="{{ weather.description }}">
+                <p>{{ weather.temperature }}°C, {{ weather.description }}</p>
+            </div>
+        {% else %}
+            <div class="error-container">
+                <p class="error">This information is not correct! :(</p>
+                <a href="/">Go back</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
